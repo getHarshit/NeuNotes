@@ -8,11 +8,11 @@ export default function AddNote(props){
         title : '',
         text : '',
     });
-    const characterLimit = 200;
+    const characterLimit = 300;
 
     function handleChange(event){
         const value = event.target.value;
-        const count = noteText.title.length;
+        const count = noteText.title.length +noteText.text.length ;
         console.log(count);
         if(characterLimit - count >=0){
             setNoteText({
@@ -43,15 +43,16 @@ export default function AddNote(props){
                       cols ="10"
                       value={noteText.title}
                       name = "title"
-                      placeholder = "Add A title"
+                      placeholder = "Add New Note"
                       onChange={handleChange}
+                      className ="title"
                       />
             <textarea 
                 rows="9" 
                 cols="10" 
                 value={noteText.text}
                 name = "text"
-                placeholder="Type to add new note" 
+                placeholder="Add Description" 
                 onChange = {handleChange}
             ></textarea>
             <div className="notes-footer">
