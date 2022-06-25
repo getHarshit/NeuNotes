@@ -9,19 +9,10 @@ export default function App(){
   const [notes,setNotes] = useState([
     {
       id : nanoid(),
+      title : "Introduction",
       text : 'Hello I am here ',
       date: '12/02/23'
     },
-    {
-      id : nanoid(),
-      text : 'Hello 2 am here ',
-      date: '12/02/23'
-    },
-    {
-      id : nanoid(),
-      text : 'Hello 3 am here ',
-      date: '12/02/23'
-    }
   ]);
 
   const [searchtext,setSearchtext] = React.useState(); 
@@ -39,12 +30,13 @@ export default function App(){
     localStorage.setItem('react-notes-app-data',JSON.stringify(notes))
   }, [notes])
   
-  function handleSave(text){
+  function handleSave(noteData){
     const date = new Date();
     
     const newNote = {
       id: nanoid(),
-      text : text,
+      title : noteData.title,
+      text : noteData.text,
       date : date.toLocaleDateString()
     }
 
