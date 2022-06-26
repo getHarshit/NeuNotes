@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import {nanoid} from 'nanoid'
 import NotesList from './components/notesList'
-import Search from './components/search';
 import Header from './components/header';
+import Pagination from './components/pagination';
 
 export default function App(){
 
@@ -15,7 +15,18 @@ export default function App(){
     },
   ]);
 
+  //pagination States
   const [searchtext,setSearchtext] = React.useState(); 
+  const [currentPage, setCurrentpage] = React.useState(1);
+  const [notesPerPage] = React.useState(5);
+
+  
+  //finding First and Last Index of a note on a page
+  const indexOfLastNote = currentPage*notesPerPage;
+  const indexOfFirstNote = indexOfLastNote - notesPerPage;
+  const currentNotes = notes.slice(indexOfFirstNote,indexOfLastNote);
+
+  const paginate =(pageNumber)=> setCurrentpage(pageNumber)
 
   React.useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
@@ -40,7 +51,7 @@ export default function App(){
       date : date.toLocaleDateString()
     }
 
-    const newNotes = [...notes,newNote];
+    const newNotes = [newNote,...notes];
     setNotes(newNotes);
   }
 
@@ -53,13 +64,13 @@ export default function App(){
 
     </div>
     <div className='noteArea'>
-    <Header/>
-    <Search handleSearch ={setSearchtext}/>
+    <Header setSearchtext={setSearchtext}/>
+    
     <NotesList 
-            notes = {searchtext?notes.filter((note)=>note.text.toLowerCase().includes(searchtext)):notes} 
+            notes = {searchtext?notes.filter((note)=>note.title.toLowerCase().includes(searchtext)):currentNotes} 
             handleSave = {handleSave} 
             deleteNote = {deleteNote}/>
     </div>
-    
+    <Pagination notesPerPage={notesPerPage} totalNotes= {notes.length} paginate = {paginate } />
   </div>
 }
