@@ -4,6 +4,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #FFF0E5;
+  background-image: radial-gradient(#10162F 1px, transparent 0);
+  background-size: 40px 40px;
+  overflow-y: hidden;
 }
 
 code {
@@ -30,16 +33,16 @@ code {
   align-items: center;
   background-color: rgb(233,233,233);
   padding: 5px;
-  margin-top: 20px;
-  margin-bottom: 1.5em;
+  margin-top: 5px;
+  margin-left: 30px;
   border-radius: 10px;
   border: solid;
-  border-width: 3px;
-  box-shadow: rgb(0, 0, 0) 2.3px 2.3px 0px;
+  border-width: 1px;
+  box-shadow: 0px 0px 0 #10162F;
 }
 .searchBar{ 
   background-color: rgb(233,233,233);
-  width: 900px;
+  width: 200px;
   border: none;
 }
 .searchBar:focus{
@@ -68,7 +71,7 @@ textarea:focus{
 }
 
 .title{
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   font-weight: 600;
   font-size: 24px;
 }
@@ -111,6 +114,7 @@ textarea:focus{
   box-shadow: -8px 8px 0 #10162f ;
 }
 .notetitle{
+  color: #10162f;
   margin-top: 4px;
   font-weight: 600;
   font-size: 24px;
@@ -136,11 +140,37 @@ hr{
   margin: 0;
 }
 
-span{
+.description{
   word-wrap: break-word;
 }
 .delete-icon:hover{
   background-color: #67d7cc;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.pagination{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: center;
+  
+}
+
+.pageItem{
+  color: white;
+  background-color: #FFD300;
+  border: 1px solid black;
+  border-color: #10162F;
+  margin-left: 5px;
+  padding: 5px;
+}
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+.pageLink{
+  color: white;
+  text-decoration: none;
 }

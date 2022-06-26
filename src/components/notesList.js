@@ -13,7 +13,7 @@ export default function List(prop){
                     />
     })
     return <div className="notesList">
-        {notes}
         <AddNote handleSave = {prop.handleSave}/>
+        {notes}
     </div>
 }
