@@ -10,6 +10,7 @@ export default function List(prop){
                     date = {note.date} 
                     key = {note.id} 
                     deleteNote = {prop.deleteNote}
+                    pinNote = {prop.pinNote}
                     />
     })
     return <div className="notesList">

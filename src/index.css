@@ -15,12 +15,14 @@ code {
 }
 
 .container{
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  max-width: 1100px;
+  padding-left: 40px;
 }
+
+
+
 
 .header{
   display: flex;
@@ -53,6 +55,7 @@ code {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  height: 80vh;
 }
 
 .note.new{
@@ -79,17 +82,17 @@ textarea:focus{
 .save{
   background-color: #e1e1e1;
   border-style: solid;
-  border-width: 3px;
+  border-width: 2px;
   border-radius: 15px;
   padding: 5px 10px 5px 10px;
   user-select: none;
-  box-shadow: rgb(0, 0, 0) 2.3px 2.3px 0px;
+  box-shadow: 0px 0px 0 #10162F;
+  
 }
 
 .save:hover{
   background-color: #ededed;
   cursor: pointer;
-  box-shadow: none;
 }
 
 .note{
@@ -99,7 +102,7 @@ textarea:focus{
     border-color: #10162F;
     padding: 1rem;
     display: flex;
-    min-height: 14rem;
+    height: 15rem;
     background-color: white;
     flex-direction: column;
     box-shadow: 0px 0px 0 #10162F;
@@ -118,14 +121,20 @@ textarea:focus{
   margin-top: 4px;
   font-weight: 600;
   font-size: 24px;
+  word-wrap: break-word;
 }
 .description{
   height: 150px;
   margin-top: 12px;
 }
 
+.noteArea{
+  width : 1700px;
+  height: 80vh;
+}
+
 .notes-footer{
-  display: flex;
+  display : flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
@@ -163,7 +172,9 @@ hr{
   border: 1px solid black;
   border-color: #10162F;
   margin-left: 5px;
-  padding: 5px;
+  margin-bottom: 4px;
+  padding: 9px;
+
 }
 a:link {
   color: white;
@@ -173,4 +184,126 @@ a:link {
 .pageLink{
   color: white;
   text-decoration: none;
+}
+
+
+.sideBar{
+  width: 600px;
+  height: fit-content;
+  margin-left: 20px;
+  margin-right: -320px;
+  margin-top: 80px;
+}
+
+.sidebar-heading{
+  margin-top: 0;
+  user-select: none;
+}
+
+.card{
+  color: black;
+  border: 1px solid black;
+  border-color: #10162F;
+  padding: 1rem;
+  display: flex;
+  min-height: 3rem;
+  margin-bottom: 6px;
+  background-color: rgb(202, 178, 255);
+  flex-direction: column;
+  box-shadow: 0px 0px 0 #10162F;
+  white-space: pre-wrap;
+  justify-content: space-between;
+  transition: box-shadow 200ms ease,transform 200ms ease;
+}
+
+.pinHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tagline{
+  margin-top: -10px;
+}
+
+.pinIcon{
+  height: 20px;
+  width: 20px;
+  margin-bottom: 13px;
+  background-color: #EA564B;
+  color: white;
+  padding: 3px;
+  border: 1px solid black;
+  border-color: #10162F;
+}
+
+.pinIcon:hover{
+  cursor: pointer;
+  background-color: #67d7cc;
+}
+
+.pinnedIcon{
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+  border-color: #10162F;
+}
+
+.pinnedIcon:hover{
+  cursor: pointer;
+  background-color: #67d7cc;
+}
+.pintitle{
+  font-weight:600;
+}
+
+h4{
+  font-weight: 500;
+  background-color: #67d7cc;
+  user-select: none;
+}
+
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 0;
+  font-size: 18px;
+}
+
+.modal, .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49,49,49,0.8);
+}
+.modal-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
 }

@@ -13,7 +13,7 @@ export default function AddNote(props){
     function handleChange(event){
         const value = event.target.value;
         const count = noteText.title.length +noteText.text.length ;
-        console.log(count);
+        
         if(characterLimit - count >=0){
             setNoteText({
                 ...noteText,
