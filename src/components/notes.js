@@ -1,10 +1,12 @@
 import React from "react";
-import { MdDeleteForever } from "react-icons/md";
-
+import { MdDeleteForever,MdOutlinePushPin } from "react-icons/md";
 export default function Notes(prop){
     return (
         <div className="note">
+            <div className="pinHeader">
             <h2 className="notetitle">{prop.title}</h2>
+            <MdOutlinePushPin className="pinIcon" onClick={()=>prop.pinNote(prop.id)}/>
+            </div>
             <hr></hr>
             <div className="description">{prop.text}</div>
             <div className="notes-footer">

@@ -3,15 +3,17 @@ import {nanoid} from 'nanoid'
 import NotesList from './components/notesList'
 import Header from './components/header';
 import Pagination from './components/pagination';
+import SideBar from './components/sideBar';
 
 export default function App(){
 
   const [notes,setNotes] = useState([
     {
       id : nanoid(),
-      title : "Introduction",
+      title : "Introduction", 
       text : 'Hello I am here ',
-      date: '12/02/23'
+      date: '12/02/23',
+      pinned : false
     },
   ]);
 
@@ -19,8 +21,9 @@ export default function App(){
   const [searchtext,setSearchtext] = React.useState(); 
   const [currentPage, setCurrentpage] = React.useState(1);
   const [notesPerPage] = React.useState(5);
+  const [pinnedNotesCount, setPinnedNotesCount] = React.useState(0)
 
-  
+   
   //finding First and Last Index of a note on a page
   const indexOfLastNote = currentPage*notesPerPage;
   const indexOfFirstNote = indexOfLastNote - notesPerPage;
@@ -48,6 +51,7 @@ export default function App(){
       id: nanoid(),
       title : noteData.title,
       text : noteData.text,
+      pinned : false,
       date : date.toLocaleDateString()
     }
 
@@ -59,18 +63,57 @@ export default function App(){
     const newNotes = notes.filter(note=>note.id !== id);
     setNotes(newNotes);
   }
-  return <div className='container'>
-    <div className='sidebar'>
 
-    </div>
+  
+  function pinNote(id){
+    
+    if(pinnedNotesCount < 6){
+      
+      setNotes(notes.map(oldnote =>{
+        if(oldnote.id === id && oldnote.pinned === true){
+          setPinnedNotesCount(oldcount=>oldcount-1);
+        }
+        else if(oldnote.id === id && oldnote.pinned === false){
+          setPinnedNotesCount(oldcount=>oldcount+1);
+        }
+        return oldnote.id === id?{
+          ...oldnote,
+          pinned: !oldnote.pinned,
+        }:oldnote;
+      }))
+    }
+    else{
+      alert("You cannot Pin More than 6 Notes");
+    }
+    
+  }
+
+  function RemoveNote(id){
+    
+    
+      setNotes(notes.map(oldnote =>{
+        
+        return oldnote.id === id?{
+          ...oldnote,
+          pinned: !oldnote.pinned,
+        }:oldnote;
+      }))
+      setPinnedNotesCount(oldcount=>oldcount-1); 
+  }
+  
+  return <div className='container'>
+    
     <div className='noteArea'>
     <Header setSearchtext={setSearchtext}/>
     
     <NotesList 
             notes = {searchtext?notes.filter((note)=>note.title.toLowerCase().includes(searchtext)):currentNotes} 
             handleSave = {handleSave} 
-            deleteNote = {deleteNote}/>
+            deleteNote = {deleteNote}
+            pinNote = {pinNote}
+            />
+          <Pagination notesPerPage={notesPerPage} totalNotes= {notes.length} paginate = {paginate } />
     </div>
-    <Pagination notesPerPage={notesPerPage} totalNotes= {notes.length} paginate = {paginate } />
+    <SideBar notes = {notes.filter(note => note.pinned ===true)} removeNote = {RemoveNote} pinnedNotesCount ={pinnedNotesCount}/>
   </div>
 }
