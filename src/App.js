@@ -4,7 +4,7 @@ import NotesList from './components/notesList'
 import Header from './components/header';
 import Pagination from './components/pagination';
 import SideBar from './components/sideBar';
-
+import Popup from './components/popup'
 export default function App(){
 
   const [notes,setNotes] = useState([
@@ -13,7 +13,7 @@ export default function App(){
       title : "Introduction", 
       text : 'Hello I am here ',
       date: '12/02/23',
-      pinned : false
+      pinned : false,
     },
   ]);
 
@@ -23,7 +23,9 @@ export default function App(){
   const [notesPerPage] = React.useState(5);
   const [pinnedNotesCount, setPinnedNotesCount] = React.useState(0)
 
-   
+  //modal State
+  const [modal, setModal] = useState(false);
+  const [editableNote,seteditablenote] = useState({})
   //finding First and Last Index of a note on a page
   const indexOfLastNote = currentPage*notesPerPage;
   const indexOfFirstNote = indexOfLastNote - notesPerPage;
@@ -59,6 +61,12 @@ export default function App(){
     setNotes(newNotes);
   }
 
+  function editNote(id){
+    seteditablenote(notes.filter(note => note.id === id));
+    setModal(true);
+  }
+
+
   function deleteNote(id){
     const newNotes = notes.filter(note=>note.id !== id);
     setNotes(newNotes);
@@ -89,8 +97,6 @@ export default function App(){
   }
 
   function RemoveNote(id){
-    
-    
       setNotes(notes.map(oldnote =>{
         
         return oldnote.id === id?{
@@ -102,7 +108,7 @@ export default function App(){
   }
   
   return <div className='container'>
-    
+    {modal && <Popup modal = {modal} setModal = {setModal} note = {editableNote} />}
     <div className='noteArea'>
     <Header setSearchtext={setSearchtext}/>
     
@@ -111,6 +117,7 @@ export default function App(){
             handleSave = {handleSave} 
             deleteNote = {deleteNote}
             pinNote = {pinNote}
+            editNote = {editNote}
             />
           <Pagination notesPerPage={notesPerPage} totalNotes= {notes.length} paginate = {paginate } />
     </div>

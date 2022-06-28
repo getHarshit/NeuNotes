@@ -11,6 +11,7 @@ export default function List(prop){
                     key = {note.id} 
                     deleteNote = {prop.deleteNote}
                     pinNote = {prop.pinNote}
+                    editNote = {prop.editNote}
                     />
     })
     return <div className="notesList">
