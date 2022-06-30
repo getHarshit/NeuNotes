@@ -11,10 +11,11 @@ export default function List(prop){
                     key = {note.id} 
                     deleteNote = {prop.deleteNote}
                     pinNote = {prop.pinNote}
+                    editNote = {prop.editNote}
                     />
     })
     return <div className="notesList">
-        <AddNote handleSave = {prop.handleSave}/>
+        {prop.currentPage === 1 && <AddNote handleSave = {prop.handleSave}/>}
         {notes}
     </div>
 }
