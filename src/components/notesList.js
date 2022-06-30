@@ -15,7 +15,7 @@ export default function List(prop){
                     />
     })
     return <div className="notesList">
-        <AddNote handleSave = {prop.handleSave}/>
+        {prop.currentPage === 1 && <AddNote handleSave = {prop.handleSave}/>}
         {notes}
     </div>
 }

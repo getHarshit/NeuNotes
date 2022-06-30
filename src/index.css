@@ -235,6 +235,7 @@ a:link {
   padding: 3px;
   border: 1px solid black;
   border-color: #10162F;
+  z-index: 10;
 }
 
 .pinIcon:hover{
@@ -282,7 +283,7 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: 5;
+  z-index: 15;
   
 }
 
@@ -299,21 +300,30 @@ body.active-modal {
   border-radius: 3px;
   min-width: 600px;
   min-height: 600px;
-  z-index: 10;
+  z-index: 20;
 }
 
 .close-modal {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 7px;
+  top: 14px;
+  right: -16px;
+  padding: 3px 3px;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeIcon{
+  width: 30px;
+  height: 30px;
 }
 
 .popup{
   color: black;
   border: 1px solid black;
   border-color: #10162F;
-  padding: 1rem;
+  padding: 20px;
   display: flex;
   font-size: 45px;
   height: 400px;
@@ -327,9 +337,22 @@ body.active-modal {
 }
 
 textarea.title{
-  font-size: large;
+  font-size: 24px;
+  margin-bottom: 12px;
+
 }
 
-textarea.description{
+.editDescription{
   font-size: 16px;
+  margin-bottom: 40px;
 }
+
+.line{
+  margin-top: -20px;
+  border-width: 2px;
+  border-color: #10162F;
+}
+
+.limit{
+  font-size: 14px;
+}                                              

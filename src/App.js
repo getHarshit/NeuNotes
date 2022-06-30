@@ -21,7 +21,7 @@ export default function App(){
   const [searchtext,setSearchtext] = React.useState(); 
   const [currentPage, setCurrentpage] = React.useState(1);
   const [notesPerPage] = React.useState(5);
-  const [pinnedNotesCount, setPinnedNotesCount] = React.useState(0)
+  const [pinnedNotesCount, setPinnedNotesCount] = React.useState(1)
 
   //modal State
   const [modal, setModal] = useState(false);
@@ -35,30 +35,41 @@ export default function App(){
 
   React.useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
-    if(savedNotes){
-      setNotes(savedNotes);
+    if(savedNotes[0]){
+      setNotes(savedNotes[0]);
     }
-    
+    if(savedNotes[1]){
+      setPinnedNotesCount(savedNotes[1]);
+    }
   }, [])
   
 
   React.useEffect(() => {
-    localStorage.setItem('react-notes-app-data',JSON.stringify(notes))
-  }, [notes])
+
+    console.log(notes,pinnedNotesCount)
+    localStorage.setItem('react-notes-app-data',JSON.stringify({notes,pinnedNotesCount}))
+    
+  }, [notes,pinnedNotesCount])
   
   function handleSave(noteData){
     const date = new Date();
+      const newNote = {
+        id: nanoid(),
+        title : noteData.title,
+        text : noteData.text,
+        pinned : false,
+        date : date.toLocaleDateString()
+        
+      }
+      const newNotes = [newNote,...notes];
     
-    const newNote = {
-      id: nanoid(),
-      title : noteData.title,
-      text : noteData.text,
-      pinned : false,
-      date : date.toLocaleDateString()
-    }
-
-    const newNotes = [newNote,...notes];
-    setNotes(newNotes);
+      if(noteData.id){
+        clearDup(noteData.id,newNotes)
+      }
+      else{
+        setNotes(newNotes);
+      }
+      
   }
 
   function editNote(id){
@@ -66,8 +77,14 @@ export default function App(){
     setModal(true);
   }
 
+  function clearDup(id,obj){
+    
+    const newNotes = obj.filter(note=>note.id !== id);
+    setNotes(newNotes);
+  }
 
   function deleteNote(id){
+    console.log(notes.filter(note=>note.id !== id))
     const newNotes = notes.filter(note=>note.id !== id);
     setNotes(newNotes);
   }
@@ -108,7 +125,7 @@ export default function App(){
   }
   
   return <div className='container'>
-    {modal && <Popup modal = {modal} setModal = {setModal} note = {editableNote} />}
+    {modal && <Popup modal = {modal} setModal = {setModal} note = {editableNote} handleSave = {handleSave} deleteNote ={deleteNote} />}
     <div className='noteArea'>
     <Header setSearchtext={setSearchtext}/>
     
@@ -118,6 +135,7 @@ export default function App(){
             deleteNote = {deleteNote}
             pinNote = {pinNote}
             editNote = {editNote}
+            currentPage = {currentPage}
             />
           <Pagination notesPerPage={notesPerPage} totalNotes= {notes.length} paginate = {paginate } />
     </div>

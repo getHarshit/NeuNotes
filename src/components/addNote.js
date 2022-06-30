@@ -5,6 +5,7 @@ import React from "react";
 export default function AddNote(props){
 
     const [noteText,setNoteText] = React.useState({
+        
         title : '',
         text : '',
     });
@@ -27,10 +28,11 @@ export default function AddNote(props){
     }
 
     function onClickSave(){
-        console.log(noteText.title);
+        
         if(noteText.title.length > 0){
             props.handleSave(noteText);
             setNoteText({
+                
                 title: '',
                 text: '',
             });
