@@ -108,7 +108,7 @@ export default function App(){
       }))
     }
     else{
-      alert("You cannot Pin More than 6 Notes");
+      alert("You cannot Pin More than 6  Notes");
     }
     
   }
