@@ -34,13 +34,16 @@ export default function App(){
   const paginate =(pageNumber)=> setCurrentpage(pageNumber)
 
   React.useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
-    if(savedNotes[0]){
-      setNotes(savedNotes[0]);
+    if(localStorage.getItem('react-notes-app-data')){
+      const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
+      if(savedNotes[0]){
+        setNotes(savedNotes[0]);
+      }
+      if(savedNotes[1]){
+        setPinnedNotesCount(savedNotes[1]);
+      }
     }
-    if(savedNotes[1]){
-      setPinnedNotesCount(savedNotes[1]);
-    }
+    
   }, [])
   
 
