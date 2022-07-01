@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/NeuNotes/static/css/main.751595e9.css",
-    "main.js": "/NeuNotes/static/js/main.339a74fd.js",
+    "main.css": "/NeuNotes/static/css/main.93a40804.css",
+    "main.js": "/NeuNotes/static/js/main.1f65319a.js",
     "index.html": "/NeuNotes/index.html",
-    "main.751595e9.css.map": "/NeuNotes/static/css/main.751595e9.css.map",
-    "main.339a74fd.js.map": "/NeuNotes/static/js/main.339a74fd.js.map"
+    "main.93a40804.css.map": "/NeuNotes/static/css/main.93a40804.css.map",
+    "main.1f65319a.js.map": "/NeuNotes/static/js/main.1f65319a.js.map"
   },
   "entrypoints": [
-    "static/css/main.751595e9.css",
-    "static/js/main.339a74fd.js"
+    "static/css/main.93a40804.css",
+    "static/js/main.1f65319a.js"
   ]
 }
