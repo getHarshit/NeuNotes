@@ -18,6 +18,7 @@ export default function Modal({modal,setModal,note,handleSave,deleteNote}) {
     id:noteData.id,
     title : noteData.title,
     text : noteData.text,
+    pinned:noteData.pinned
 });
 const characterLimit = 300;
 

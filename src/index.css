@@ -356,3 +356,18 @@ textarea.title{
 .limit{
   font-size: 14px;
 }                                              
+
+.toast{
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  transition-duration: 3ms;
+  border-color: #10162F;
+  border-width: 2px;
+  width: 300px;
+  height: 40px;
+  background-color:#67d7cc;
+  position: absolute;
+  top: 600px;
+  left:650px;
+  z-index: 30;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}

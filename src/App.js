@@ -4,6 +4,7 @@ import NotesList from './components/notesList'
 import Header from './components/header';
 import Pagination from './components/pagination';
 import SideBar from './components/sideBar';
+import Toasts from './components/toasts';
 import Popup from './components/popup'
 export default function App(){
 
@@ -85,7 +86,7 @@ export default function App(){
         id: nanoid(),
         title : noteData.title,
         text : noteData.text,
-        pinned : false,
+        pinned : noteData.pinned,
         date : date.toLocaleDateString()
         
       }
