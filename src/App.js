@@ -33,7 +33,7 @@ export default function App(){
 
   const paginate =(pageNumber)=> setCurrentpage(pageNumber)
 
-  React.useEffect(() => {
+ /* React.useEffect(() => {
     if(localStorage.getItem('react-notes-app-data') != null){
       const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
       if(savedNotes[0]){
@@ -44,7 +44,7 @@ export default function App(){
       }
     }
     
-  }, [])
+  }, []) */
   
 
   React.useEffect(() => {
