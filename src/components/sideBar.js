@@ -11,7 +11,7 @@ export default function sideBar({notes,removeNote,pinnedNotesCount}) {
             <span className='pintitle'>{note.title}</span>
             <MdPushPin className='pinnedIcon' cursor= "pointer" onClick={()=>removeNote(note.id)}/>
         </div>
-        <span className='tagline'>{note.text.slice(0,20)}</span>
+        <span className='tagline'>{note.text.slice(0,20)}......</span>
     </div>
     })
 
