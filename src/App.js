@@ -11,10 +11,32 @@ export default function App(){
     {
       id : nanoid(),
       title : "Introduction", 
-      text : 'Hello I am here ',
+      text : 'Hello There this Is Notes App ',
+      date: '12/02/23',
+      pinned : true,
+    },
+    {
+      id : nanoid(),
+      title : "Introduction", 
+      text : 'This App uses NeuBrutalism CSS Theme ',
       date: '12/02/23',
       pinned : false,
     },
+    {
+      id : nanoid(),
+      title : "Pin Notes", 
+      text : 'You can Pin Notes By clicking On them ',
+      date: '12/02/23',
+      pinned : false,
+    },
+    {
+      id : nanoid(),
+      title : "Saving and Editing Notes ", 
+      text : 'you can editing Notes by clicking Them and Then press save',
+      date: '12/02/23',
+      pinned : false,
+    }
+    
   ]);
 
   //pagination States
@@ -41,6 +63,7 @@ export default function App(){
   }, [notes,pinnedNotesCount])
 
  React.useEffect(() => {
+
     if(localStorage.getItem('react-notes-app-data') != null){
       const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
       if(savedNotes[0]){
