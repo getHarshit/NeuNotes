@@ -2,16 +2,16 @@ import React from 'react'
 import { MdPushPin } from 'react-icons/md'
 
 
-export default function sideBar({notes,removeNote,pinnedNotesCount}) {
+export default function sideBar({notes,removeNote,pinnedNotesCount, editNote}) {
 
     const pinnedNotes = notes.map(note=>{
         return <div className='card' key={note.id}>
             
         <div className='pinHeader'>
-            <span className='pintitle'>{note.title}</span>
+            <span className='pintitle' onClick={()=>editNote(note.id)}>{note.title}</span>
             <MdPushPin className='pinnedIcon' cursor= "pointer" onClick={()=>removeNote(note.id)}/>
         </div>
-        <span className='tagline'>{note.text.slice(0,20)}......</span>
+        <span className='tagline' onClick={()=>editNote(note.id)}>{note.text.slice(0,20)}......</span>
     </div>
     })
 

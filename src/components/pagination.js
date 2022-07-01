@@ -13,9 +13,9 @@ export default function pagination({notesPerPage,totalNotes, paginate}) {
             {
             pageNumber.map(number =>{
                return  <li key={number} className="pageItem">
-                    <a href="!#" onClick={()=>paginate(number)} className='pageLink'>
+                    <button  onClick={()=>paginate(number)} className='pageLink'>
                         {number}
-                    </a>
+                    </button>
                </li> 
             })}
         </ul>

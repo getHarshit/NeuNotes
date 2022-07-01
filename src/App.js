@@ -167,6 +167,6 @@ export default function App(){
             />
           <Pagination notesPerPage={notesPerPage} totalNotes= {notes.length} paginate = {paginate } />
     </div>
-    <SideBar notes = {notes.filter(note => note.pinned ===true)} removeNote = {RemoveNote} pinnedNotesCount ={pinnedNotesCount}/>
+    <SideBar notes = {notes.filter(note => note.pinned ===true)} removeNote = {RemoveNote} pinnedNotesCount ={pinnedNotesCount} editNote={editNote}/>
   </div>
 }
