@@ -33,7 +33,14 @@ export default function App(){
 
   const paginate =(pageNumber)=> setCurrentpage(pageNumber)
 
- /* React.useEffect(() => {
+  React.useEffect(() => {
+
+    console.log(notes,pinnedNotesCount)
+    localStorage.setItem('react-notes-app-data',JSON.stringify({notes,pinnedNotesCount}))
+    
+  }, [notes,pinnedNotesCount])
+
+ React.useEffect(() => {
     if(localStorage.getItem('react-notes-app-data') != null){
       const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
       if(savedNotes[0]){
@@ -44,15 +51,10 @@ export default function App(){
       }
     }
     
-  }, []) */
+  }, [])
   
 
-  React.useEffect(() => {
 
-    console.log(notes,pinnedNotesCount)
-    localStorage.setItem('react-notes-app-data',JSON.stringify({notes,pinnedNotesCount}))
-    
-  }, [notes,pinnedNotesCount])
   
   function handleSave(noteData){
     const date = new Date();
