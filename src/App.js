@@ -43,12 +43,13 @@ export default function App(){
   //pagination States
   const [searchtext,setSearchtext] = React.useState(); 
   const [currentPage, setCurrentpage] = React.useState(1);
-  const [notesPerPage] = React.useState(5);
+  const notesPerPage = 5;
   const [pinnedNotesCount, setPinnedNotesCount] = React.useState(1)
 
   //modal State
   const [modal, setModal] = useState(false);
   const [editableNote,seteditablenote] = useState({})
+
   //finding First and Last Index of a note on a page
   const indexOfLastNote = currentPage*notesPerPage;
   const indexOfFirstNote = indexOfLastNote - notesPerPage;
